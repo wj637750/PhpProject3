@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+require ('model\database.php');
+require ('model\player.php');
+require ('model\playerDB.php');
+session_start();
+
+$action = filter_input(INPUT_POST, 'action');
+if ($action === NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action === NULL) {
+        $action = 'main_menu';
+    }
+}
+
+switch ($action) {
+    case 'main_menu':
+        include('mainmenu.php');
+        break;
+        die;
+}
