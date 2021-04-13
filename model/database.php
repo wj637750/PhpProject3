@@ -1,8 +1,27 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    class Database {
+        private static $dsn = 'mysql:host=localhost;dbname=program3';
+        private static $username = 'root';
+        private static $password = '';
+        private static $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+        private static $db;
+        
+        private function __construct() {}
+        
+        public static function getDB () {
+            if (!isset(self::$db)) {
+                try {
+                    self::$db = new PDO(self::$dsn,
+                                        self::$username,
+                                        self::$password,
+                                        self::$options);
+                } catch (PDOException $e) {
+                    $error_message = $e->getMessage();
+                    include('../errors/database_error.php');
+                    exit();
+                }
+            }
+            return self::$db;
+        }
+    }
 
