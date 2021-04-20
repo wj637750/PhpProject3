@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>program 3</title>
-        <link rel="stylesheet" type="text/css" href="program3css.css"
+        <?php include 'view\header.php'?>
     </head>
     <body>
         <div id="wrapper">
             <p>Hello, welcome to program 3, by William Johnson.</p>
+            <a href="?action=create_player">Create a new player</a>
         </div>
     </body>
 </html>
