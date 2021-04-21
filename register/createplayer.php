@@ -8,7 +8,7 @@
             
         <?php if (!empty($errorName)) {
             ?> <p id="error"><?php echo htmlspecialchars($errorName);
-        } ?>
+            } ?></p>
         <br>
         <!-- input name -->        
         <label>Player Name</label>

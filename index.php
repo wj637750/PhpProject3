@@ -47,11 +47,13 @@ switch ($action) {
         
         if($Class === NULL){
             $errorClass = $errorClass . "Please select a class";
+        } else if ($Class === '') {
+            $errorClass = $errorClass . "Please select a class";
         }
         
         
         
-        if($errorName != '' || $errorClass = '')
+        if($errorName != '' || $errorClass != '')
         {
             include('register/createplayer.php');
             exit();
