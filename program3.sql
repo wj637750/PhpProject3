@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2021 at 07:20 PM
+-- Generation Time: Apr 27, 2021 at 07:22 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.13
+-- PHP Version: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `program3`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `ImageID` int(3) NOT NULL,
+  `filePath` varchar(255) NOT NULL,
+  `PlayerID` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -39,6 +51,12 @@ CREATE TABLE `player` (
 --
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`ImageID`);
+
+--
 -- Indexes for table `player`
 --
 ALTER TABLE `player`
@@ -47,6 +65,12 @@ ALTER TABLE `player`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `ImageID` int(3) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `player`
