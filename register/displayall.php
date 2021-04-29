@@ -26,9 +26,14 @@
                             } ?>
                         
                             <img src='<?php echo $playerImage[0] ?>' width='50' height = '50'>
-                    
-                    
                     </td>
+                    <td>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="newimage">
+                                <input type="hidden" name="playerID" value="<?php echo htmlspecialchars($player->getPlayerID()); ?>">
+                                <input type="submit" value="change Image">
+                            </form>
+                        </td>
 
                     
                    

@@ -70,4 +70,50 @@ switch ($action) {
         include('register\displayall.php');
         break;
         die;
+    case 'new image':
+        
+        
+        
+        break;
+        die;
+    case 'uploadimage':
+        $playerID = filter_input(INPUT_POST, "playerID");
+        if(isset($_FILES['image'])){
+            $setDefualt = true;
+    
+            $errorUserPageImage = '';
+            
+            $errors= array();
+            $file_name = $_FILES['image']['name'];
+            $file_size = $_FILES['image']['size'];
+            $file_tmp = $_FILES['image']['tmp_name'];
+            $file_type = $_FILES['image']['type'];
+            $temp = $_FILES['image']['name'];
+            $temp = explode('.', $temp);
+            $temp = end($temp);
+            $file_ext = strtolower($temp);
+            
+            $extensions= array("jpeg", "jpg", "png", "gif"); 
+            
+             $fileNameNew = uniqid('',true).".".$file_ext;
+            
+            if(in_array($file_ext,$extensions) === false){
+                
+                $errors[]="file extension not in whitelist: " . join(',',$extensions);
+            }
+           
+            if(empty($errors)=== true){
+                move_uploaded_file($file_tmp,"Image/".$fileNameNew);
+                
+                imageDB::addImage("Image/".$fileNameNew, $playerID );
+                $imageUser = imageDB::getImagesWithUserID($playerID);
+                $actualImage = $imageUser[0];
+                //echo "Success";
+              //echo "<img src='Image/default.png'>";
+                $changeNotice = 'Image Uploaded';
+              echo '<img src =Image/'.$file_name;
+            }
+        }
+        break;
+        die;
 }
