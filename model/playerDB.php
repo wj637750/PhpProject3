@@ -7,10 +7,20 @@ class playerDB {
         $db = Database::getDB();
         
         $queryUsers = 'SELECT * from player';
+        
         $statement = $db->prepare($queryUsers);
         $statement->execute();
-        $players = $statement->fetchAll();
-        $statement->closeCursor;
+        $rows = $statement->fetchAll();
+        $statement->closeCursor();
+        
+        $players = array();
+        foreach ($rows as $row) {
+            $p = new Player($row['playerName'],
+                            $row['playerClass'],
+                            '');
+            $players[] = $p;
+        }
+        
         return $players;
     }
     

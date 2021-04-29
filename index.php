@@ -58,4 +58,16 @@ switch ($action) {
             include('register/createplayer.php');
             exit();
         }
+        
+        playerDB::addPlayer($Name, $Class);
+                
+        include('register\confirmation.php');
+        die;
+        break;
+    case 'display_players':
+        $players = playerDB::getPlayers();
+        
+        include('register\displayall.php');
+        break;
+        die;
 }

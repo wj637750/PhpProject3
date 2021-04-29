@@ -15,6 +15,7 @@
                       
                       <!--<li><a href="?action=login_user">Login</a></li>-->
                       <li><a href="?action=create_player">Create new player</a></li>
+                      <li><a href="?action=display_players">View player</a></li>
 
 
                       <!--<li><a href="?action=logout">Logout</a></li>-->

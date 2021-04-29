@@ -4,9 +4,10 @@ class Player {
     
     private $playerID, $playerName, $playerClass, $playerScore;
     
-    public function __construct($playerName, $playerClass) {
+    public function __construct($playerName, $playerClass, $playerScore) {
         $this->playerName = $playerName;
         $this->playerClass = $playerClass;
+        $this->playerScore = $playerScore;
     }
     
     public function getPlayerID() {
