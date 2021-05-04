@@ -70,12 +70,25 @@ switch ($action) {
         include('register\displayall.php');
         break;
         die;
-    case 'new image':
+    case 'choose':
+        $playerID = filter_input(INPUT_POST, "playerID");
+        $_SESSION['playerData'] = playerDB::retrievePlayerDataByID($playerID);
+        $playerData = playerDB::retrievePlayerDataByID($playerID);
+        $_SESSION['verifeiedPlayer'] = $playerData['playerName'];
         
-        
+        include('mainmenu.php');
+        break;
+        die;
+    case 'delete':
+        $playerID = filter_input(INPUT_POST, "playerID");
+        $playerData = playerDB::retrievePlayerDataByID($playerID);
+        playerDB::deletePlayerDataByID($playerID);
         
         break;
         die;
+        
+        
+        
     case 'uploadimage':
         $playerID = filter_input(INPUT_POST, "playerID");
         if(isset($_FILES['image'])){

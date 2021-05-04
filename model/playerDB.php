@@ -17,6 +17,8 @@ class playerDB {
         foreach ($rows as $row) {
             $p = new Player($row['playerName'],
                             $row['playerClass'],
+                            $row['playerScore'],
+                            $row['playerID'],
                             '');
             $players[] = $p;
         }
@@ -36,6 +38,38 @@ class playerDB {
         $statement->bindValue(':playerClass', $playerClass);
         $statement->execute();
         $statement->closeCursor();
+    }
+    
+    public static function retrievePlayerDataByID($playerID)
+    {
+        $db = Database::getDB();
+        
+        $query = 'SELECT * FROM player WHERE playerID = :playerID';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':playerID', $playerID);
+        $statement->execute();
+        $row = $statement->fetch();
+        $statement->closeCursor();
+        
+        $playerData = new Player($row['playerID'],
+                                     $row['playerName'],
+                                     $row['playerClass'],
+                                     $row['playerScore'],
+                                     '');
+        
+        return $playerData;
+    }
+    
+    public static function deletePlayerDataByID($playerID)
+    {
+        $db = Database::getDB();
+        
+        $query = 'DELETE * FROM player WHERE playerID = :playerID';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':playerID', $playerID);
+        $statement->execute();
+        $statement->closeCursor();
+        
     }
 }
 

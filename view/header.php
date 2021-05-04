@@ -19,7 +19,10 @@
 
 
                       <!--<li><a href="?action=logout">Logout</a></li>-->
-
+                      <?php if (isset($_SESSION['verifiedPlayer'])) 
+                      { ?>
+                        <p class="user"><?php echo $_SESSION['verifeiedPlayer']; ?></p>
+                  <?php } ?>
  
                  
               </nav>

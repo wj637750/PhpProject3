@@ -1,3 +1,4 @@
+<?php $playerImage[0] = ''; ?>
 <html>
     <?php include 'view\header.php'?>
     <body>
@@ -29,14 +30,19 @@
                     </td>
                     <td>
                             <form action="index.php" method="post">
-                                <input type="hidden" name="action" value="newimage">
+                                <input type="hidden" name="action" value="choose">
                                 <input type="hidden" name="playerID" value="<?php echo htmlspecialchars($player->getPlayerID()); ?>">
-                                <input type="submit" value="change Image">
+                                <input type="submit" value="Choose this player">
                             </form>
                         </td>
-
-                    
-                   
+                        
+                        <td>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="playerID" value="<?php echo htmlspecialchars($player->getPlayerID()); ?>">
+                                <input type="submit" value="delete this player">
+                            </form>
+                        </td>
                 </tr>
                 <?php endforeach; ?> 
                 
